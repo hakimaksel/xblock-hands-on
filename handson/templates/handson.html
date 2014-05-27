@@ -1,16 +1,19 @@
-{% if instruction %}
-<div class="instruction">
-  <iframe src="http://docs.google.com/viewer?url={{ instruction }}&embedded=true" style="border: none;"></iframe>
-</div>
-{% elif video %}
-<div class="video"></div>
-{% else %}
-<div class="placeholder"></div>
-{% endif %}
+<style type="text/css">
+	.video, .workpad { display: block-inline;}
+</style>
+{% if video and workpad %}
+<script src="http://jwpsrv.com/library/xXmn2uXIEeOGQyIACtqXBA.js"></script>
+<div class="wrapper" width="100%">
+	<div class="video" id="myVideo" width="40%"></div>
+	<script>
+    	jwplayer("myVideo").setup({
+        	file: "{{ video }}",
+    	});
+	</script>
 
-{% if workpad %}
-<div class="workpad">
-  <iframe src="{{ workpad }}"></iframe>
+	<div class="workpad" width="40%">
+  		<iframe src="{{ workpad }}" width="480px" height="270px" style="display: inline-block;"></iframe>
+	</div>
 </div>
 {% else %}
 <div class="placeholder"></div>
