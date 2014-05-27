@@ -1,0 +1,17 @@
+{% if instruction %}
+<div class="instruction">
+  <iframe src="http://docs.google.com/viewer?url={{ instruction }}&embedded=true" style="border: none;"></iframe>
+</div>
+{% elif video %}
+<div class="video"></div>
+{% else %}
+<div class="placeholder"></div>
+{% endif %}
+
+{% if workpad %}
+<div class="workpad">
+  <iframe src="{{ workpad }}"></iframe>
+</div>
+{% else %}
+<div class="placeholder"></div>
+{% endif %}
