@@ -1,0 +1,20 @@
+<div class="wrapper-comp-settings is-active" id="settings-tab">
+  <script id="metadata-editor-tpl" type="text/template">// JS crashes when empty //</script>
+  <ul class="list-input settings-list">
+      <li class="field comp-setting-entry is-set">
+          <div class="wrapper-comp-setting">
+            <label class="label setting-label" for="workpad">Workpad URL</label>
+            <input class="input setting-input" id="workpad" value="{{ self.workpad_url }}" type="text">
+          </div>
+      </li>
+      <li class="field comp-setting-entry is-set">
+          <div class="wrapper-comp-setting">
+            <label class="label setting-label" for="video">Video URL</label>
+            <input class="input setting-input" id="video" value="{{ self.video_url }}" type="text">
+          </div>
+      </li>
+  </ul>
+</div>
+<div class="row module-actions">
+    <a href="#" class="xblock-save-button action-primary action">Save</a>
+</div>

@@ -10,7 +10,6 @@ class HandsOnBlock(XBlock):
     """
 
     workpad_url = String(help="URL for the workpad server", default=None, scope=Scope.content)
-    instruction_url = String(help="URL of the instructions file", default=None, scope=Scope.content)
     video_url = String(help="URL for the video instruction", default=None, scope=Scope.content)
 
     def student_view(self, context):
@@ -20,7 +19,6 @@ class HandsOnBlock(XBlock):
         fragment = Fragment()
 
         context = {
-            'instruction': self.instruction_url.replace(':', '%3A').replace('/', '%2F'),
             'workpad': self.workpad_url,
             'video': self.video_url,
         }
@@ -28,3 +26,22 @@ class HandsOnBlock(XBlock):
         fragment.add_content(render_template('/templates/handson.html', context))
 
         return fragment
+
+    def studio_view(self, context):
+        """
+        Studio edit view
+        """
+
+        fragment = Fragment()
+        fragment.add_content(render_template('templates/handson_edit.html', {'self': self, }))
+        fragment.add_javascript(load_resource('public/js/jquery-ui-1.10.4.custom.js'))
+        fragment.add_javascript(load_resource('public/js/handson_edit.js'))
+        fragment.initialize_js('HandsOnEditBlock')
+
+        return fragment
+
+    @XBlock.json_handler
+    def studio_submit(self, submissions, suffix=''):
+        self.workpad_url = submissions['workpad']
+        self.video_url = submissions['video']
+        return {'result': 'success',}
