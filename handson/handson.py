@@ -24,6 +24,8 @@ class HandsOnBlock(XBlock):
         }
 
         fragment.add_content(render_template('/templates/handson.html', context))
+        fragment.add_css(load_resource('public/css/handson.css'))
+        fragment.add_javascript(load_resource('public/js/handson.js'))
 
         return fragment
 
@@ -45,3 +47,7 @@ class HandsOnBlock(XBlock):
         self.workpad_url = submissions['workpad']
         self.video_url = submissions['video']
         return {'result': 'success',}
+
+    @staticmethod
+    def workbench_scenarios():
+        return [('handson', '<handson video_url="http://www.youtube.com/watch?v=Z1xHvWjJtOo" workpad_url="https://met-vs105.bu.edu:8443/met-excel71.html" />')]

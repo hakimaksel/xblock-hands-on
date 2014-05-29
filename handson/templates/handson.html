@@ -1,20 +1,37 @@
-<style type="text/css">
-	.video, .workpad { display: block-inline;}
-</style>
-{% if video and workpad %}
-<script src="http://jwpsrv.com/library/xXmn2uXIEeOGQyIACtqXBA.js"></script>
-<div class="wrapper" width="100%">
-	<div class="video" id="myVideo" width="40%"></div>
-	<script>
-    	jwplayer("myVideo").setup({
-        	file: "{{ video }}",
-    	});
-	</script>
-
-	<div class="workpad" width="40%">
-  		<iframe src="{{ workpad }}" width="480px" height="270px" style="display: inline-block;"></iframe>
-	</div>
+<div class="contentPane">
+    <div class="slide">SLIDE Inserted Here</div>
+    <div class="slideButton"><back>BACK</forward></div>
+    <div class="slideButton"><forward>FORWARD</forward></div>
+  <br class="clearFloat">
 </div>
-{% else %}
-<div class="placeholder"></div>
-{% endif %}
+ 
+
+
+<!---WORKSPACE EMBED -->
+<div style="margin: 30px 10px 30px 10px;
+	    padding: 20px 20px 20px 20px;
+	    border-style:solid;
+	    border-width:5px;
+	    border-radius:25px;
+	    border-color:#999;
+	    background-color:#CCC;
+	    width:820px;
+    height: 730px;
+    float:left;">
+    <td align="center"><iframe width="800" height="565" frameborder="0" scrolling="no" src="{{ workpad }}"></iframe></td>
+    <!--INSTRUCTIONS-->
+        <div style="margin: 30px 0px 30px 0px;
+        padding: 20px 20px 20px 20px;
+        border-style:solid;
+        border-width:5px;
+        border-radius:25px;
+        border-color:#999;
+        background-color:#eeeeee;
+        width:760px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:18px;
+        font-weight:800;
+        text-align:center;">
+        Use the embedded Excel window above<br />to work through the module.
+        </div>
+    </div>
