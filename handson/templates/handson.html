@@ -1,37 +1,54 @@
-<div class="contentPane">
-    <div class="slide">SLIDE Inserted Here</div>
-    <div class="slideButton"><back>BACK</forward></div>
-    <div class="slideButton"><forward>FORWARD</forward></div>
-  <br class="clearFloat">
-</div>
- 
+{% if video and workpad %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://jwpsrv.com/library/xXmn2uXIEeOGQyIACtqXBA.js"></script>
+<!-- outer container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="carousel-example-generic" class="carousel slide" data-interval="false">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
 
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="https://s3.amazonaws.com/xblock/slider/Slide1.JPG">
+                    </div>
+                    <div class="item">
+                        <img src="https://s3.amazonaws.com/xblock/slider/Slide2.JPG">
+                    </div>
+                    <div class="item">
+                        <div id="myVideo"></div>
+                    </div>
+                </div>
 
-<!---WORKSPACE EMBED -->
-<div style="margin: 30px 10px 30px 10px;
-	    padding: 20px 20px 20px 20px;
-	    border-style:solid;
-	    border-width:5px;
-	    border-radius:25px;
-	    border-color:#999;
-	    background-color:#CCC;
-	    width:820px;
-    height: 730px;
-    float:left;">
-    <td align="center"><iframe width="800" height="565" frameborder="0" scrolling="no" src="{{ workpad }}"></iframe></td>
-    <!--INSTRUCTIONS-->
-        <div style="margin: 30px 0px 30px 0px;
-        padding: 20px 20px 20px 20px;
-        border-style:solid;
-        border-width:5px;
-        border-radius:25px;
-        border-color:#999;
-        background-color:#eeeeee;
-        width:760px;
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:18px;
-        font-weight:800;
-        text-align:center;">
-        Use the embedded Excel window above<br />to work through the module.
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
         </div>
+        <div class="col-sm-6">
+            <iframe src="{{ workpad }}" frameborder="0" style="height: 560; width: 100%;"></iframe>
+        </div>    
     </div>
+</div>
+<script>
+    jwplayer("myVideo").setup({
+        file: "{{ video }}",
+        height: 360,
+        width: 560
+    });
+</script>
+{% else %}
+ <div class="placeholder"><h3>VideoPad XBlock</h3></div>
+{% endif %}

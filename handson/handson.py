@@ -24,8 +24,6 @@ class HandsOnBlock(XBlock):
         }
 
         fragment.add_content(render_template('/templates/handson.html', context))
-        fragment.add_css(load_resource('public/css/handson.css'))
-        fragment.add_javascript(load_resource('public/js/handson.js'))
 
         return fragment
 

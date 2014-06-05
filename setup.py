@@ -15,7 +15,7 @@ def package_data(pkg, root_list):
 
 setup(
     name='xblock-handson',
-    version='0.1',
+    version='0.2',
     description='XBlock - HandsOn',
     packages=['handson'],
     install_requires=[
