@@ -48,4 +48,4 @@ class HandsOnBlock(XBlock):
 
     @staticmethod
     def workbench_scenarios():
-        return [('handson', '<handson video_url="http://www.youtube.com/watch?v=Z1xHvWjJtOo" workpad_url="http://http://127.0.0.1:8443/met-excel71.html" />')]
+        return [('handson', '<handson video_url="http://www.youtube.com/watch?v=Z1xHvWjJtOo" workpad_url="http://127.0.0.1:8443/met-excel71.html" />')]
