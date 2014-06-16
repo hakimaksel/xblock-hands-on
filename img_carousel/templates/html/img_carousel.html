@@ -1,0 +1,29 @@
+<!-- outer container -->
+
+<div class="seq_other">
+	<!-- <div class="col-sm-12"> -->
+            <div id="carousel-example-generic" class="carousel slide" data-interval="false">                
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+					{% for img in images %}
+					{% if forloop.counter == 1 %}
+                    	<div class="item active">
+                        	<img src="{{ img }}"  width="100%" height="350">
+                    	</div>
+					{% else %}
+                    	<div class="item">
+                        	<img src="{{ img }}"  width="100%" height="350">
+                    	</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+	        </div>
+	<!-- </div> -->
+</div>

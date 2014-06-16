@@ -14,15 +14,15 @@ def package_data(pkg, root_list):
 
 
 setup(
-    name='xblock-handson',
-    version='0.2',
-    description='XBlock - HandsOn',
-    packages=['handson'],
+    name='xblock-img-carousel',
+    version='0.1',
+    description='XBlock - Images-Carousel',
+    packages=['img_carousel'],
     install_requires=[
         'XBlock',
     ],
     entry_points={
-        'xblock.v1': 'handson = handson:HandsOnBlock',
+        'xblock.v1': 'img-carousel = img_carousel:ImgCarouselBlock',
     },
-    package_data=package_data("handson", ["templates", "public"]),
+    package_data=package_data("img_carousel", ["templates", "public"]),
 )
