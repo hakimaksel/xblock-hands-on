@@ -24,9 +24,9 @@ class ImgCarouselBlock(XBlock):
        scope=Scope.content,
        default=textwrap.dedent("""
             <images>
-              <img>Question1</img>
-              <img>Q2</img>
-              <img>Q3</img>
+              <img>https://s3.amazonaws.com/xblock/slider/Slide1.JPG</img>
+              <img>https://s3.amazonaws.com/xblock/slider/Slide2.JPG</img>
+              <img>https://s3.amazonaws.com/xblock/slider/Slide3.JPG</img>
             </images>
           """
     ))
@@ -47,14 +47,13 @@ class ImgCarouselBlock(XBlock):
         }
 
         fragment.add_content(render_template('/templates/html/img_carousel.html', context))
-	fragment.add_javascript_url('http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
-	#fragment.add_javascript(load_resource('public/js/jquery-ui-1.10.4.custom.js'))
-	fragment.add_css_url('http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
-	fragment.add_javascript(load_resource('public/js/bootstrap.min.js'))
-	#fragment.add_css(load_resource('public/css/bootstrap.min.css'))
-	#fragment.add_javascript(load_resource('public/js/img_carousel.js'))	
-        fragment.initialize_js('ImgCarouselBlock') # TO-DO: remove this thing after test
-	
+        fragment.add_javascript(load_resource('public/js/jquery-ui-1.10.4.custom.js'))
+        fragment.add_css(load_resource('public/css/responsive-carousel.css'))
+        fragment.add_css(load_resource('public/css/responsive-carousel.slide.css'))
+        fragment.add_javascript(load_resource('public/js/responsive-carousel.js'))
+        fragment.add_javascript('function ImgCarouselBlock(runtime, element) { console.log("ok..."); }')
+        fragment.initialize_js('ImgCarouselBlock')
+
         return fragment
 
     def studio_view(self, context):
