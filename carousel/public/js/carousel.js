@@ -1,4 +1,4 @@
-function ImgCarouselBlock(runtime, element) {
+function CarouselBlock(runtime, element) {
     $('.jcarousel').jcarousel();
 
     $('.jcarousel-control-prev')

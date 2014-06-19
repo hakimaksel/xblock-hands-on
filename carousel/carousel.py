@@ -11,7 +11,7 @@ from .utils import load_resource, render_template
 
 from StringIO import StringIO
 
-class ImgCarouselBlock(XBlock):
+class CarouselBlock(XBlock):
     """
     An XBlock providing a responsive images carousel
     """
@@ -51,7 +51,7 @@ class ImgCarouselBlock(XBlock):
             'items': items,
         }
 
-        fragment.add_content(render_template('/templates/html/img_carousel.html', context))
+        fragment.add_content(render_template('/templates/html/carousel.html', context))
         fragment.add_javascript(load_resource('public/js/jquery-ui-1.10.4.custom.js'))
         fragment.add_css(load_resource('public/css/responsive-carousel.css'))
         fragment.add_css(load_resource('public/css/responsive-carousel.slide.css'))
@@ -59,8 +59,8 @@ class ImgCarouselBlock(XBlock):
         fragment.add_css_url("https://vjs.zencdn.net/4.5.1/video-js.css")
         fragment.add_javascript_url("https://vjs.zencdn.net/4.5.1/video.js")
         fragment.add_javascript(load_resource('public/js/youtube.js'))
-        fragment.add_javascript('function ImgCarouselBlock(runtime, element) { console.log("ok..."); }')
-        fragment.initialize_js('ImgCarouselBlock')
+        fragment.add_javascript('function CarouselBlock(runtime, element) { console.log("ok..."); }')
+        fragment.initialize_js('CarouselBlock')
 
         return fragment
 
@@ -70,10 +70,10 @@ class ImgCarouselBlock(XBlock):
         """
 
         fragment = Fragment()
-        fragment.add_content(render_template('templates/html/img_carousel_edit.html', {'self': self, }))
+        fragment.add_content(render_template('templates/html/carousel_edit.html', {'self': self, }))
         fragment.add_javascript(load_resource('public/js/jquery-ui-1.10.4.custom.js'))
-        fragment.add_javascript(load_resource('public/js/img_carousel_edit.js'))
-        fragment.initialize_js('ImgCarouselEditBlock')
+        fragment.add_javascript(load_resource('public/js/carousel_edit.js'))
+        fragment.initialize_js('CarouselEditBlock')
 
         return fragment
 
@@ -97,4 +97,4 @@ class ImgCarouselBlock(XBlock):
 
     @staticmethod
     def workbench_scenarios():
-            return [("carousel", "<img-carousel />")]
+            return [("carousel demo", "<carousel />")]

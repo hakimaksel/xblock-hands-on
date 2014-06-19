@@ -18,7 +18,7 @@
 	position: absolute;
 	left: 100%;
 	top: 0;
-	width: 100%; /* necessary for non-active slides */
+	width: 100%;
 	display: block; /* overrides basic carousel styles */
 	z-index: 1;
 	-webkit-transition: left .2s ease;

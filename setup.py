@@ -14,15 +14,15 @@ def package_data(pkg, root_list):
 
 
 setup(
-    name='xblock-img-carousel',
+    name='xblock-multimedia-carousel',
     version='0.1',
-    description='XBlock - Images-Carousel',
-    packages=['img_carousel'],
+    description='XBlock - Multimedia-Carousel',
+    packages=['carousel'],
     install_requires=[
         'XBlock',
     ],
     entry_points={
-        'xblock.v1': 'img-carousel = img_carousel:ImgCarouselBlock',
+        'xblock.v1': 'carousel = carousel:CarouselBlock',
     },
-    package_data=package_data("img_carousel", ["templates", "public"]),
+    package_data=package_data("carousel", ["templates", "public"]),
 )
