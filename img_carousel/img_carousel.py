@@ -1,4 +1,5 @@
 import textwrap
+import urllib
 from lxml import etree
 from xml.etree import ElementTree as ET
 
@@ -19,15 +20,17 @@ class ImgCarouselBlock(XBlock):
         default="Images-carousel", 
         scope=Scope.content
     )
-
+    
     data = String(help="",  
        scope=Scope.content,
        default=textwrap.dedent("""
-            <images>
+            <carousel>
               <img>https://s3.amazonaws.com/xblock/slider/Slide1.JPG</img>
               <img>https://s3.amazonaws.com/xblock/slider/Slide2.JPG</img>
               <img>https://s3.amazonaws.com/xblock/slider/Slide3.JPG</img>
-            </images>
+              <video>http://www.youtube.com/watch?v=8cBIAwh4EjA</video>
+              <doc>http://research.google.com/archive/bigtable-osdi06.pdf</doc>
+            </carousel>
           """
     ))
 
@@ -37,13 +40,15 @@ class ImgCarouselBlock(XBlock):
         """
 
 	root = ET.fromstring(self.data)
-        images = []
+        items = {}
         for child in root:
-            images.append(child.text)
+            if child.tag == 'doc': child.text = urllib.quote(child.text, '')
+            items[child] = {'tag': child.tag, 'text': child.text}
+
         fragment = Fragment()
 
         context = {
-            'images': images,
+            'items': items,
         }
 
         fragment.add_content(render_template('/templates/html/img_carousel.html', context))
@@ -89,3 +94,7 @@ class ImgCarouselBlock(XBlock):
         return {
             'result': 'success',
         }
+
+    @staticmethod
+    def workbench_scenarios():
+            return [("carousel", "<img-carousel />")]
