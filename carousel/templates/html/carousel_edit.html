@@ -15,7 +15,19 @@
             <label class="label setting-label" for="edit_data">Definition</label>
             <span class="tip setting-help">The XML definition for the image carousel</span>
             <div class='codemirror-editor-wrapper'>
-              <textarea class="block-xml-editor edit-data">{{ self.data }}</textarea>
+              {% if xml_data %}
+              <textarea class="block-xml-editor edit-data">{{ xml_data }}</textarea>
+              {% else %}
+              <textarea class="block-xml-editor edit-data">
+                  <carousel>
+                      <img>http://met-content.bu.edu/etr2/content/images/Slide1.JPG</img>
+                      <img>http://met-content.bu.edu/etr2/content/images/Slide2.JPG</img>
+                      <img>http://met-content.bu.edu/etr2/content/images/Slide3.JPG</img>
+                      <video>http://www.youtube.com/watch?v=7uHeNryKUWk</video>
+                      <doc>http://www.bu.edu/met-eti/files/2013/03/Final_VirtualLaboratoriesForLearning.pdf</doc>
+                 </carousel>
+              </textarea>
+              {% endif %}
             </div>
           </div>
       </li>
